@@ -49,7 +49,7 @@ export default function Login() {
     const onSubmit = (e) => {
    setC(c+1)
         e.preventDefault()
-        axios.post('https://allcine227.com/api/login_check', formData)
+        axios.post('https://admin.allcine227.com/api/login_check', formData)
             .then((res) => {
                 if (res.status === 200) {
 

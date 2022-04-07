@@ -17,7 +17,7 @@ const Original = () => {
     const [page, setPage] = React.useState(1);
 
 
-    const url=`https://allcine227.com/api/articles.json?page=${page}`
+    const url=`https://admin.allcine227.com/api/articles.json?page=${page}`
     const getData =async () => {
         axios
             .get(url,{
