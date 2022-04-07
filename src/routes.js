@@ -110,11 +110,7 @@ const RouteApp = () => {
 
                         <Route
                             path="/*"
-                            element={
-                                <main style={{ padding: "1rem" }}>
-                                    <h1>There's nothing here!</h1>
-                                </main>
-                            }
+                            element={<Menu/>}
                         />
                     </Route>
                 </Routes>
