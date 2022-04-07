@@ -44,24 +44,24 @@ function register() {
             </Button>
             <Btnderoulan
                 name={"Film"}
-                name1={"populair"} lien1={"film/popular"}
-                name2={"nouveauté"} lien2={"film/new"}
-                name3={"plus vues"} lien3={"film/top"}
-                name4={"Trier par genre"} lien4={"film/genrelist"}
+                name1={"populair"} lien1={"/film/popular"}
+                name2={"nouveauté"} lien2={"/film/new"}
+                name3={"plus vues"} lien3={"/film/top"}
+                name4={"Trier par genre"} lien4={"/film/genrelist"}
             />
             <Btnderoulan
                 name={"Serie"}
-                name1={"populair"} lien1={"serie/popular"}
-                name2={"nouveauté"} lien2={"serie/new"}
-                name3={"plus vues"} lien3={"serie/top"}
+                name1={"populair"} lien1={"/serie/popular"}
+                name2={"nouveauté"} lien2={"/serie/new"}
+                name3={"plus vues"} lien3={"/serie/top"}
                 name4={"Trier par genre"} lien4={"serie/genrelist"}
             />
             <Btnderoulan
                 name={"Materiel"}
-                name1={"original"} lien1={"materiel/original"}
-                name2={"Moyenne"} lien2={"materiel/moyenne"}
-                name3={"Moins chere"} lien3={"materiel/moins"}
-                name4={"Moins chere"} lien4={"film/genre/action"}
+                name1={"original"} lien1={"/materiel/original"}
+                name2={"Moyenne"} lien2={"/materiel/moyenne"}
+                name3={"Moins chere"} lien3={"/materiel/moins"}
+                name4={"Moins chere"} lien4={"/film/genre/action"}
             />
         </>}
         search={auth() ?
@@ -82,7 +82,7 @@ function register() {
                     sx={{
                         my: 2, color: 'white', display: 'block', backgroundColor: pink[900], marginLeft: 2
                     }}
-                    onClick={() => navigate(`/react/panier`)}
+                    onClick={() => navigate(`/panier`)}
 
                 >
                     <ShoppingCartIcon />
@@ -103,7 +103,7 @@ function register() {
                     sx={{
                         my: 2, color: 'white', display: 'block', backgroundColor: pink[900], marginLeft: 2
                     }}
-                    onClick={() => navigate(`/react/login`)}
+                    onClick={() => navigate(`/login`)}
 
                 >
                     Connexion

@@ -43,7 +43,7 @@ export default function Login() {
     const [formData, setFormData] = React.useState({email: '', password: ''})
 
     const register=()=>{
-        navigate('/register')
+        navigate('https://admin.allcine227.com/register')
         window.location.reload()
     }
     const onSubmit = (e) => {

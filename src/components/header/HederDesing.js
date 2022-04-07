@@ -130,22 +130,22 @@ export default function HeaderDesing(props) {
                 <List>
                     <NestedBtn name={"Menu"} link={"top"}/>
                     <NestedList name={"Film"}>
-                        <NestedBtn setOpen={setOpen} name={"Populair"} link={"film/popular"}/>
-                        <NestedBtn setOpen={setOpen} name={"Nouveauté"} link={"film/new"}/>
-                        <NestedBtn setOpen={setOpen} name={"plus vue"} link={"film/top"}/>
-                        <NestedBtn setOpen={setOpen} name={"Trier par genre"} link={"film/genrelist"}/>
+                        <NestedBtn setOpen={setOpen} name={"Populair"} link={"/film/popular"}/>
+                        <NestedBtn setOpen={setOpen} name={"Nouveauté"} link={"/film/new"}/>
+                        <NestedBtn setOpen={setOpen} name={"plus vue"} link={"/film/top"}/>
+                        <NestedBtn setOpen={setOpen} name={"Trier par genre"} link={"/film/genrelist"}/>
                     </NestedList>
                     <NestedList name={"Serie"}>
-                        <NestedBtn setOpen={setOpen} name={"Populair"} link={"serie/popular"}/>
-                        <NestedBtn setOpen={setOpen} name={"Nouveauté"} link={"serie/new"}/>
-                        <NestedBtn setOpen={setOpen} name={"plus vue"} link={"serie/top"}/>
-                        <NestedBtn setOpen={setOpen} name={"Trier par genre"} link={"serie/genrelist"}/>
+                        <NestedBtn setOpen={setOpen} name={"Populair"} link={"/serie/popular"}/>
+                        <NestedBtn setOpen={setOpen} name={"Nouveauté"} link={"/serie/new"}/>
+                        <NestedBtn setOpen={setOpen} name={"plus vue"} link={"/serie/top"}/>
+                        <NestedBtn setOpen={setOpen} name={"Trier par genre"} link={"/serie/genrelist"}/>
                     </NestedList>
 
                     <NestedList name={"Materiel"}>
-                        <NestedBtn setOpen={setOpen} name={"Original"} link={"materiel/original"}/>
-                        <NestedBtn setOpen={setOpen} name={"Moyenne"} link={"materiel/moyenne"}/>
-                        <NestedBtn setOpen={setOpen} name={"Moins chere"} link={"materiel/moins"}/>
+                        <NestedBtn setOpen={setOpen} name={"Original"} link={"/materiel/original"}/>
+                        <NestedBtn setOpen={setOpen} name={"Moyenne"} link={"/materiel/moyenne"}/>
+                        <NestedBtn setOpen={setOpen} name={"Moins chere"} link={"/materiel/moins"}/>
                     </NestedList>
 
 
