@@ -1,14 +1,22 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import React, {useEffect, useState} from "react";
+import ReactDOM, {render} from "react-dom";
+import RouteApp from "./routes";
+import {CartProvider} from "react-use-cart";
+import {AuthProvider} from "react-auth-kit";
 import reportWebVitals from './reportWebVitals';
 
+
+
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+    <AuthProvider authType={'cookie'}
+                  authName={'_auth'}
+                  cookieDomain={window.location.hostname}
+                  cookieSecure={window.location.protocol === "https:"}>
+        <CartProvider>
+            <RouteApp/>
+        </CartProvider>
+    </AuthProvider>,
+    document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function
