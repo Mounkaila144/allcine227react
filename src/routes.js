@@ -63,12 +63,12 @@ const RouteApp = () => {
             <BrowserRouter>
                 <Routes>
 
-                    <Route path="react/" element={<App/>}>
+                    <Route path="/" element={<App/>}>
                         <Route path="login" element={<Login token={token} setToken={setToken}/>}/>
                         <Route path="menu" element={<Menu/>}/>
                         <Route path={"panier"}
                                element={
-                                   <RequireAuth loginPath={'/react/login'}>
+                                   <RequireAuth loginPath={'/login'}>
                                        <Panier token={token} setToken={setToken}/>
                                    </RequireAuth>
                                }/>
@@ -109,7 +109,7 @@ const RouteApp = () => {
                         </Route>
 
                         <Route
-                            path="react/*"
+                            path="/*"
                             element={
                                 <main style={{ padding: "1rem" }}>
                                     <h1>There's nothing here!</h1>
