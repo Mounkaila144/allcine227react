@@ -3,7 +3,7 @@ import axios from "axios";
 
 const DetailMateriel = () => {
     const [product, setProduct] = useState([]);
-    const url=`https://admin.allcine227.com/api/articles.json`
+    const url=`https://227.allcine227.com/api/articles.json`
     const getData =async () => {
         axios
             .get(url)

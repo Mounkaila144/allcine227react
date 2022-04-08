@@ -9,6 +9,7 @@ import Button from '@mui/material/Button';
 import {pink} from "@mui/material/colors";
 import {useIsAuthenticated, useSignOut} from 'react-auth-kit'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import Allcine from './r.png'
 
 
 const drawerWidth = 240;
@@ -30,7 +31,7 @@ function register() {
     }
 
     return (<HeaderDesing
-        logo={"ALL-CINE"}
+        logo={"Allcine"}
         btnflexsm={<>
             <Button
                 variant="contained"

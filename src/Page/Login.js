@@ -43,13 +43,13 @@ export default function Login() {
     const [formData, setFormData] = React.useState({email: '', password: ''})
 
     const register=()=>{
-        navigate('https://admin.allcine227.com/register')
+        navigate('https://227.allcine227.com/register')
         window.location.reload()
     }
     const onSubmit = (e) => {
    setC(c+1)
         e.preventDefault()
-        axios.post('https://admin.allcine227.com/api/login_check', formData)
+        axios.post('https://227.allcine227.com/api/login_check', formData)
             .then((res) => {
                 if (res.status === 200) {
 

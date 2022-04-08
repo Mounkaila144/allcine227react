@@ -50,7 +50,7 @@ bgcolor:"grey.900"
                     playing
                     width={"100%"}
                     height={"100%"}
-                    url={`https://admin.allcine227.com/image/${products.videoName}`}/>
+                    url={`https://227.allcine227.com/image/${products.videoName}`}/>
                 <ThemeProvider theme={theme}>
                     <Typography component="h3" color={"white"}>
                         {products.nom}

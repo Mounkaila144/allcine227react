@@ -29,7 +29,7 @@ export default function Produis() {
     // que useEffect ne s’exécutera qu’une fois, un peu comme
     // componentDidMount()
     useEffect(() => {
-        fetch("https://admin.allcine227.com/api/articles.json")
+        fetch("https://227.allcine227.com/api/articles.json")
             .then(res => res.json())
             .then(
                 (result) => {
