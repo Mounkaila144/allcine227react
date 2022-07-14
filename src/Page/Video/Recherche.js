@@ -1,11 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
-import {Autocomplete, Pagination, TextField} from "@mui/material";
 import {Link} from "react-router-dom";
-import {pink} from "@mui/material/colors";
 import Box from "@mui/material/Box";
 import ProductCard from "../../components/card/ProductCard";
-import {useForm} from "react-hook-form";
 import Search from "../../components/header/Search";
 
 const Film = ({types}) => {
@@ -38,25 +35,6 @@ const Film = ({types}) => {
         getData()
         window.scrollTo(0, 0);
     }, [search,types])
-
-    const handleChange = (event, value) => {
-        setPage(value);
-    }
-    const  titre=(text)=> {
-        let result=text.substr(0,15)
-        if (text.length>15){
-            return `${result}...`
-    }
-        else {
-            return result
-        }
-    }
-    const handleChange1=(e)=> {
-        setsearch(e.target.value)
-    }
-    const { register, handleSubmit } = useForm();
-    const handleRegistration = (data) => setsearch(data.name);
-
     return (
         <>
         <Box sx={{
@@ -82,7 +60,7 @@ const Film = ({types}) => {
                 }}>
                     {
                         product.map((products) => (
-                                <Link to={types === "movie" ?`/react/film/${products.id}`:`/react/serie/${products.id}`} key={`${products.id}`}>
+                                <Link to={types === "movie" ?`/film/${products.id}`:`/serie/${products.id}`} key={`${products.id}`}>
                                     <ProductCard sx={{boxShadow: 6,}}
                                                  title={types === "movie" ? products.title : products.name}
                                                  img={`https://image.tmdb.org/t/p/w500${products.poster_path}`}/>

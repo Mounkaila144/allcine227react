@@ -2,9 +2,8 @@ import React, {useState} from 'react';
 import {useCart} from "react-use-cart";
 import axios from "axios";
 import Button from "@mui/material/Button";
-import {useAuthUser} from "react-auth-kit";
 import Card from "@mui/material/Card";
-import {Badge, Grid, Stack} from "@mui/material";
+import {Alert, AlertTitle, Badge, Grid, Stack} from "@mui/material";
 import CardContent from "@mui/material/CardContent";
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
@@ -14,15 +13,16 @@ import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
 import {styled} from "@mui/material/styles";
 import {orange} from "@mui/material/colors";
-
-
+import jwt_decode from "jwt-decode"
+import ApiLink from "../components/Api/Api";
 
 
 function Panier() {
-    const auth = useAuthUser()
-    const [c, setC] = useState(0);
-    const url = `https://227.allcine227.com/api/commandes`
+    const [aalert,setAlert]=useState(false)
+    const url = `https://${ApiLink}/api/commandes`
     const token = localStorage.getItem('token')
+    var decode=jwt_decode(token)
+    console.log(decode)
     const headers = {
         'authorization': `Bearer ${token}`,
         'Content-Type': 'application/json',
@@ -40,8 +40,14 @@ function Panier() {
             .then((res) => {
                 if (res.status === 201) {
                     emptyCart()
+                    setAlert(true)
+                    setTimeout(()=>{setAlert(false)},5000);
                 } else {
+
                 }
+            }).catch(
+            function () {
+
             })
     }
     const nb = (type) => {
@@ -58,13 +64,16 @@ function Panier() {
     const {
         emptyCart,
         isEmpty,
-        totalUniqueItems,
         items,
         updateItemQuantity,
         removeItem,
         cartTotal,
     } = useCart();
     if (isEmpty) return  <Box component="div" sx={{overflow: 'auto', color: orange[900], fontSize: 22, marginBottom:2,marginTop:2}}>
+        {aalert ?<Alert variant="filled" severity="success">
+            <AlertTitle>Panier Envoyez avez succès</AlertTitle>
+            Vous recevrais votre commande le plus vite possible
+        </Alert>:null}
         Votre panier est vide
     </Box>;
     return (

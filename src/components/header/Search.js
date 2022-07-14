@@ -1,19 +1,18 @@
 import React from 'react';
 import {styled} from "@mui/material/styles";
 import {alpha, InputBase} from "@mui/material";
-import SearchIcon from "@mui/icons-material/Search";
 import {useForm} from "react-hook-form";
-import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
+import {grey, pink} from "@mui/material/colors";
 
 
 const Search = ({setsearch}) => {
     const Search = styled('div')(({theme}) => ({
         position: 'relative',
-        borderRadius: theme.shape.borderRadius,
-        backgroundColor: alpha(theme.palette.common.white, 0.60),
+        borderRadius: 20,
+        backgroundColor: alpha(grey[700], 0.7),
         '&:hover': {
-            backgroundColor: "white",
+            backgroundColor: grey[500],
         },
         marginLeft: 0,
         width: '100%',
@@ -23,18 +22,8 @@ const Search = ({setsearch}) => {
         },
     }));
 
-    const SearchIconWrapper = styled('div')(({theme}) => ({
-        padding: theme.spacing(0, 2),
-        height: '100%',
-        position: 'absolute',
-        pointerEvents: 'none',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-    }));
-
     const StyledInputBase = styled(InputBase)(({theme}) => ({
-        color: 'inherit',
+        color: pink[900],
         '& .MuiInputBase-input': {
             padding: theme.spacing(1, 1, 1, 0),
             // vertical padding + font size from searchIcon
@@ -62,7 +51,7 @@ const Search = ({setsearch}) => {
 
                 <form onSubmit={handleSubmit(handleRegistration)}>
                     <StyledInputBase
-                        placeholder="Reherche…"
+                        placeholder="Recherche…"
                         inputProps={{'aria-label': 'Recherche'}}
                         name="name" {...register('name')}
                     />

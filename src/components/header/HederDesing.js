@@ -1,21 +1,28 @@
-import React from 'react';
 import {grey} from "@mui/material/colors";
-import {useNavigate} from "react-router-dom";
-import NestedList from "../BtnSidebar";
-import NestedBtn from "../NestedBtn";
+import * as React from 'react';
 import {styled, useTheme} from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import MuiAppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
-import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import Button from "@mui/material/Button";
+import {useNavigate} from "react-router-dom";
+import NestedList from "../BtnSidebar";
+import NestedBtn from "../NestedBtn";
+import {useIsAuthenticated, useSignOut} from "react-auth-kit";
+import ListItemButton from "@mui/material/ListItemButton";
+import CableIcon from '@mui/icons-material/Cable';
+import LoginIcon from '@mui/icons-material/Login';
+import LogoutIcon from '@mui/icons-material/Logout';
+import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 
 const drawerWidth = 240;
 
@@ -37,12 +44,6 @@ const AppBar = styled(MuiAppBar, {
         }),
     }),
 }));
-const pages = {
-    "name": ["Materiel", "serie", "Film"],
-    "Materiel": ["top", "cable", "clavier"],
-    "serie": ["Film", "top", "new", "popular"],
-    "Film": ["Serie", "top", "new", "popular"]
-};
 
 
 const DrawerHeader = styled('div')(({theme}) => ({
@@ -55,20 +56,9 @@ const DrawerHeader = styled('div')(({theme}) => ({
 }));
 
 export default function HeaderDesing(props) {
-    const [anchorEl, setAnchorEl] = React.useState(null);
-    const opene = Boolean(anchorEl);
-    const handleClick = (event) => {
-        setAnchorEl(event.currentTarget);
-    };
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
-
-
+    const auth = useIsAuthenticated()
+    const signOut = useSignOut()
     let navigate = useNavigate();
-    const [anchorElNav, setAnchorElNav] = React.useState(null);
-    const [anchorElUser, setAnchorElUser] = React.useState(null);
-
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
 
@@ -77,6 +67,29 @@ export default function HeaderDesing(props) {
     };
 
     const handleDrawerClose = () => {
+        setOpen(false);
+    };
+
+    const menu = () => {
+        navigate(`/menu `)
+        setOpen(false);
+    };
+    const materiel = () => {
+        navigate("/materiel/original")
+        setOpen(false);
+    };
+    const extrait = () => {
+        navigate("/extrait")
+        setOpen(false);
+    };
+
+    const login = () => {
+        navigate(`/login `)
+        setOpen(false);
+    };
+
+    const deconexion = () => {
+        signOut()
         setOpen(false);
     };
 
@@ -93,15 +106,15 @@ export default function HeaderDesing(props) {
                     >
                         <MenuIcon/>
                     </IconButton>
-                    <Typography variant="h6" noWrap component="div" sx={{display: {xs: 'none', md: 'flex'}}}>
+                    <Box sx={{display: {xs: 'none', md: 'flex'}}}>
                         {props.logo}
-                    </Typography>
+                    </Box>
                     <Box sx={{flexGrow: 1, display: {xs: 'none', md: 'flex'}}}>
                         {props.btnflexsm}
 
 
                     </Box>
-                        {props.search}
+                    {props.search}
                 </Toolbar>
             </AppBar>
             <Drawer
@@ -122,34 +135,73 @@ export default function HeaderDesing(props) {
                 open={open}
             >
                 <DrawerHeader>
-                    <IconButton onClick={handleDrawerClose}>
+                    <IconButton sx={{color:'white'}} onClick={handleDrawerClose}>
                         {theme.direction === 'ltr' ? <ChevronLeftIcon/> : <ChevronRightIcon/>}
                     </IconButton>
                 </DrawerHeader>
                 <Divider/>
+                <Button
+                    variant="contained"
+                    sx={{
+                        color: 'white', backgroundColor: grey[600]
+                    }}
+                    onClick={menu}
+                    startIcon={<AttachMoneyIcon sx={{color:'yellow'}}/>}
+                >
+                    Tarifs
+                </Button>
                 <List>
-                    <NestedBtn name={"Menu"} link={"top"}/>
                     <NestedList name={"Film"}>
                         <NestedBtn setOpen={setOpen} name={"Populair"} link={"/film/popular"}/>
                         <NestedBtn setOpen={setOpen} name={"Nouveauté"} link={"/film/new"}/>
                         <NestedBtn setOpen={setOpen} name={"plus vue"} link={"/film/top"}/>
-                        <NestedBtn setOpen={setOpen} name={"Trier par genre"} link={"/film/genrelist"}/>
+                        <NestedBtn setOpen={setOpen} name={"Trier par genre"} link={"/filmlist"}/>
                     </NestedList>
                     <NestedList name={"Serie"}>
                         <NestedBtn setOpen={setOpen} name={"Populair"} link={"/serie/popular"}/>
                         <NestedBtn setOpen={setOpen} name={"Nouveauté"} link={"/serie/new"}/>
                         <NestedBtn setOpen={setOpen} name={"plus vue"} link={"/serie/top"}/>
-                        <NestedBtn setOpen={setOpen} name={"Trier par genre"} link={"/serie/genrelist"}/>
+                        <NestedBtn setOpen={setOpen} name={"Trier par genre"} link={"/serielist"}/>
                     </NestedList>
-
-                    <NestedList name={"Materiel"}>
-                        <NestedBtn setOpen={setOpen} name={"Original"} link={"/materiel/original"}/>
-                        <NestedBtn setOpen={setOpen} name={"Moyenne"} link={"/materiel/moyenne"}/>
-                        <NestedBtn setOpen={setOpen} name={"Moins chere"} link={"/materiel/moins"}/>
-                    </NestedList>
+                    <ListItemButton onClick={materiel}
+                                    sx={{color: 'white'}}>
+                        <ListItemIcon>
+                            <CableIcon sx={{color:"white"}}/>
+                        </ListItemIcon>
+                        <ListItemText primary={"Materiel"}/>
+                    </ListItemButton>
+                    <ListItemButton onClick={extrait}
+                                    sx={{color: 'white'}}>
+                        <ListItemIcon>
+                            <CableIcon sx={{color: "white"}}/>
+                        </ListItemIcon>
+                        <ListItemText primary={"Extrait"}/>
+                    </ListItemButton>
 
 
                 </List>
+                {auth() ?
+                    <Button
+                        variant="contained"
+                        sx={{
+                            backgroundColor: grey[600]
+                        }}
+                        onClick={deconexion}
+                        startIcon={<LogoutIcon/>}
+                    >
+                        Deconnexion
+                    </Button>:
+                    <Button
+                        variant="contained"
+                        sx={{
+                             color: 'white',backgroundColor: grey[600]
+                        }}
+                        onClick={login}
+                        startIcon={<LoginIcon/>}
+                    >
+
+                        Connexion
+                    </Button>}
             </Drawer>
 
         </Box>

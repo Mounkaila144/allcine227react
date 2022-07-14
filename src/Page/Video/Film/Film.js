@@ -2,12 +2,8 @@ import React, {useEffect, useRef, useState} from 'react';
 import ProductCard from "../../../components/card/ProductCard";
 import axios from "axios";
 import {Backdrop, CircularProgress, Grid, Pagination} from "@mui/material";
-import {Link, useNavigate, useOutletContext} from "react-router-dom";
-import {pink} from "@mui/material/colors";
-import Box from "@mui/material/Box";
+import { useNavigate} from "react-router-dom";
 import Search from "../../../components/header/Search";
-import Button from "@mui/material/Button";
-import GridVideo from "../../../components/grid/Grid";
 
 const Film = ({types, type}) => {
 
@@ -73,25 +69,6 @@ initial.current=true
     const handleChange = (event, value) => {
         setPage(value);
     }
-    const titre = (text) => {
-        let result = text.substr(0, 15)
-        if (text.length > 15) {
-            return `${result}...`
-        } else {
-            return result
-        }
-    }
-    let navigate = useNavigate();
-
-    function handleClick() {
-        if (type === "movie") {
-            navigate(`/react/film/recherche`)
-
-        } else {
-            navigate(`/react/serie/recherche`)
-        }
-    }
-
     if (error) {
         return <h1>Erreur de chargement veuiller recharger la page</h1>
     } else if (!isLoaded) {

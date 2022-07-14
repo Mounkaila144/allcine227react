@@ -1,15 +1,8 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import Header from "../components/header/index";
-import {Grid, Pagination} from "@mui/material";
 import * as PropTypes from "prop-types";
-import {grey} from "@mui/material/colors";
-import {useEffect, useState} from "react";
-import {Link, Outlet} from "react-router-dom";
+import { red} from "@mui/material/colors";
 
-import axios from "axios";
-import ProductCard from "../components/card/ProductCard";
-import HeaderPhone from "../components/header/App";
 
 
 function Item(props) {
@@ -33,6 +26,7 @@ export default function Home(props) {
                     borderRadius: 2,
                     fontSize: '0.875rem',
                     fontWeight: '700',
+                    bgcolor: red[100],
                 },
             }}
         >
@@ -49,7 +43,7 @@ export default function Home(props) {
                 <Box sx={{gridArea: 'header'}}>{props.top}</Box>
                 <Box
                     sx={{
-                        bgcolor: grey[900],
+
                         marginTop:7,
                         gridArea: 'main'
 

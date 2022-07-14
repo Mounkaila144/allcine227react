@@ -1,12 +1,11 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Header from "../components/header/index";
-import {Grid} from "@mui/material";
 import * as PropTypes from "prop-types";
 import {pink} from "@mui/material/colors";
 import {useEffect, useState} from "react";
-import axios from "axios";
 import ProductCard from "../components/card/ProductCard";
+import ApiLink from "../components/Api/Api";
 
 
 function Item(props) {
@@ -29,7 +28,7 @@ export default function Produis() {
     // que useEffect ne s’exécutera qu’une fois, un peu comme
     // componentDidMount()
     useEffect(() => {
-        fetch("https://227.allcine227.com/api/articles.json")
+        fetch(`https://${ApiLink}/api/articles.json`)
             .then(res => res.json())
             .then(
                 (result) => {

@@ -1,12 +1,5 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
-import {pink} from "@mui/material/colors";
-import DoneIcon from "@mui/icons-material/Done";
-import {useCart} from "react-use-cart";
-import {useIsAuthenticated} from "react-auth-kit";
-import {useNavigate} from "react-router-dom";
 import Buttondetail from "./Serie/buttonsaison";
 
 

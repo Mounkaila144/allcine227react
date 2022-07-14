@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
-import {Backdrop, CircularProgress, createTheme, Grid} from "@mui/material";
+import {Backdrop, CircularProgress, Grid} from "@mui/material";
 import {useNavigate, useParams} from "react-router-dom";
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
@@ -28,6 +28,7 @@ const Detail = ({types}) => {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [product, setProduct] = useState([]);
+    const [pagecount, setpagecount] = useState([]);
     const [genre, setGenre] = useState([])
     const [saison, setSaison] = useState([])
     const url = `https://api.themoviedb.org/3/${types}/${params.id}?api_key=7220ce44fed075da0c331991d5c64c0d&language=fr-FR`
@@ -39,6 +40,8 @@ const Detail = ({types}) => {
                 setProduct(res.data);
                 setGenre(res.data["genres"]);
                 setSaison(res.data["seasons"]);
+                setpagecount(50)
+
             }, (error) => {
                 setIsLoaded(true);
                 setError(error);
@@ -130,7 +133,7 @@ const Detail = ({types}) => {
                                                             'type': 'serie'
                                                         })
                                                 } else {
-                                                    navigate(`/react/login`)
+                                                    navigate(`/login`)
                                                 }
                                             }}
                                         >
@@ -199,7 +202,7 @@ const Detail = ({types}) => {
                                                             'type': 'serie'
                                                         })
                                                 } else {
-                                                    navigate(`/react/login`)
+                                                    navigate(`/login`)
                                                 }
                                             }}
                                         >

@@ -1,6 +1,5 @@
 import React from 'react';
-import {Link, Route, useNavigate} from "react-router-dom";
-import GenreSerie from "./GenreSerie";
+import { useNavigate} from "react-router-dom";
 import Button from "@mui/material/Button";
 import {pink} from "@mui/material/colors";
 
@@ -42,7 +41,7 @@ const GenreSerieIndex = () => {
                         marginLeft: 2
                     }}
                     onClick={() => {
-                        navigate(`/react/serie/genre/${genres.path.toLowerCase().replace(" ", "")}`)
+                        navigate(`/serie/genre/${genres.path.toLowerCase().replace(" ", "")}`)
                     }}
                 >
                     {genres.name}

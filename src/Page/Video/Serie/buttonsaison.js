@@ -1,5 +1,4 @@
-import React, {useState} from 'react';
-import Box from "@mui/material/Box";
+import React from 'react';
 import Button from "@mui/material/Button";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import {pink} from "@mui/material/colors";
@@ -17,7 +16,6 @@ function useToggle(initialValue = false) {
 }
 const Buttondetail = ({genres,product}) => {
     const [isOn, toggleIsOn] = useToggle();
-    const [c, setC] = useState(true);
     const {addItem, removeItem, inCart} = useCart();
     const auth = useIsAuthenticated()
     let navigate = useNavigate();
@@ -34,7 +32,7 @@ const Buttondetail = ({genres,product}) => {
             removeItem(genres.id)
         }
     } else {
-        navigate(`/react/login`)
+        navigate(`/login`)
     }
     return (
                 <Button

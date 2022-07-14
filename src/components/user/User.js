@@ -1,5 +1,4 @@
-import React, {useEffect, useState} from 'react';
-import axios from "axios";
+import React from 'react';
 import {createTheme, ThemeProvider} from "@mui/material";
 import Typography from "@mui/material/Typography";
 

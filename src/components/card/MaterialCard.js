@@ -7,9 +7,8 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import {Link, useNavigate} from "react-router-dom";
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
-import {cyan, pink} from "@mui/material/colors";
+import { pink} from "@mui/material/colors";
 import {createTheme, ThemeProvider} from "@mui/material";
-import {Paid} from "@mui/icons-material";
 import {useState} from "react";
 import {useCart} from "react-use-cart";
 import {useIsAuthenticated} from 'react-auth-kit'
@@ -36,7 +35,7 @@ export default function MaterialCard({products}) {
             maxWidth: 170,
             borderRadius: '4%',
         }}>
-            <Link to={ `/react/materiel/${products.id}`}
+            <Link to={ `/materiel/${products.id}`}
                   key={`${products.id}`}>
             <CardMedia sx={{
                 maxWidth: 170,
@@ -44,7 +43,7 @@ export default function MaterialCard({products}) {
                 borderRadius: '4%',
             }}
                        component="img"
-                       image={`https://227.allcine227.com/image/${products.imageName}`}
+                       image={`https://127.0.0.1:8000/image/article/${products.imageName}`}
                        alt="green iguana"
             />
             <CardContent
@@ -63,7 +62,7 @@ export default function MaterialCard({products}) {
                     variant="contained"
                     sx={{
                         marginTop: 1,
-                        backgroundColor:inCart(products.id) ?"#1b5e20":"#006064",
+                        backgroundColor:inCart(products.id) ?"#1b5e20": pink[900],
                     }}
                     onClick={() => {
                         setC(c + 1)
@@ -79,12 +78,12 @@ export default function MaterialCard({products}) {
                                 removeItem(products.id)
                             }
                         } else {
-                            navigate(`/react/login`)
+                            navigate(`/login`)
                         }
                     }}
                 >
                     <AddShoppingCartIcon
-                        sx={{color: cyan[500]}}
+                        sx={{color: pink[500]}}
                     />{inCart(products.id)?<DoneIcon/>: "Ajouter" }
                 </Button>
 

@@ -8,14 +8,14 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';import axios from 'axios'
-import {useAuthUser, useIsAuthenticated, useSignIn} from 'react-auth-kit'
-import {Alert, CardActions, Grid, InputAdornment, TextField} from "@mui/material";
-import {AccountCircle} from "@mui/icons-material";
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import axios from 'axios'
+import { useSignIn} from 'react-auth-kit'
+import {Alert, Grid, TextField} from "@mui/material";
 import Button from "@mui/material/Button";
-import CardContent from "@mui/material/CardContent";
 import { useNavigate} from "react-router-dom";
-import {useEffect, useState} from "react";
+import { useState} from "react";
+import ApiLink from "../components/Api/Api";
 
 function Copyright(props) {
     return (
@@ -34,23 +34,33 @@ const theme = createTheme();
 
 
 export default function Login() {
-    const isAuthenticated = useIsAuthenticated()
     let navigate = useNavigate();
     const [aalert,setAlert]=useState(false)
-    const [c,setC]=useState("")
+    const [c,setC]=useState(0)
 
     const signIn = useSignIn()
     const [formData, setFormData] = React.useState({email: '', password: ''})
 
     const register=()=>{
-        navigate('https://227.allcine227.com/register')
+        navigate('/register')
         window.location.reload()
     }
+    const reset=()=>{
+        navigate('/reset-password')
+        window.location.reload()
+    }
+console.log(ApiLink)
     const onSubmit = (e) => {
    setC(c+1)
         e.preventDefault()
-        axios.post('https://227.allcine227.com/api/login_check', formData)
+        axios.post(`https://${ApiLink}/api/login_check`,
+            formData,
+            {headers:{
+                    "Accept": "application/json",
+                    "Content-Type": "application/json",
+                }})
             .then((res) => {
+                console.log(res.data.data.id)
                 if (res.status === 200) {
 
                     localStorage.setItem('token', res.data.token)
@@ -59,23 +69,32 @@ export default function Login() {
                         expiresIn: 60,
                         tokenType: "Bearer",
                         authState: res.config.data
-                    })) {
-                        navigate('/react')
-                    } else {
+                    }))
+                    {
+                        navigate('menu')
+                    }
+                    else {
 
                     }
                 }
                 else{
 
                 }
-            })
+            }).catch(
+            function () {
+                setAlert(true)
+                setTimeout(()=>{setAlert(false)},5000);
+            }
+        )
+
+
 
     }
     return (
         <Box sx={{bgcolor:'white', borderRadius:5}}>
             {aalert ?<Alert variant="filled" severity="error">
                Votre Mots de passe ou votre Adresse email est incorrect
-                </Alert>:null}
+            </Alert>:null}
         <ThemeProvider theme={theme} >
             <Container component="main" maxWidth="md">
                 <CssBaseline />
@@ -129,7 +148,7 @@ export default function Login() {
                         </Button>
                         <Grid container>
                             <Grid item xs>
-                                <Link href="#" variant="body2">
+                                <Link href="#" onClick={reset} variant="body2">
                                     Mots de passe oublier?
                                 </Link>
                             </Grid>

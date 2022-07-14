@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from "react";
-import ReactDOM, {render} from "react-dom";
+import React from "react";
+import ReactDOM from "react-dom";
 import RouteApp from "./routes";
 import {CartProvider} from "react-use-cart";
 import {AuthProvider} from "react-auth-kit";

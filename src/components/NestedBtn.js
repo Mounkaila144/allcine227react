@@ -1,6 +1,6 @@
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
-import StarBorder from "@mui/icons-material/StarBorder";
+import LocalMoviesIcon from '@mui/icons-material/LocalMovies';
 import ListItemText from "@mui/material/ListItemText";
 import * as React from "react";
 import {useNavigate} from "react-router-dom";
@@ -17,7 +17,7 @@ const NestedBtn = ({name, link,setOpen}) => {
            onClick={handleDrawerClose}
         >
             <ListItemIcon>
-                <StarBorder/>
+                <LocalMoviesIcon sx={{color:"blue"}}/>
             </ListItemIcon>
             <ListItemText primary={name}/>
         </ListItemButton>

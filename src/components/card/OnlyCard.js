@@ -3,9 +3,7 @@ import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import V4 from "./V4.jpg"
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import {pink} from "@mui/material/colors";
 import {createTheme, ThemeProvider} from "@mui/material";

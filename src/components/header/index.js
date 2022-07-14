@@ -7,14 +7,12 @@ import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import SearchIcon from '@mui/icons-material/Search';
 import {alpha, InputBase, styled} from "@mui/material";
-import { useParams, useNavigate } from "react-router-dom";
-import {grey, orange, pink, purple} from '@mui/material/colors';
+import { useNavigate } from "react-router-dom";
+import {pink} from '@mui/material/colors';
 
 const Search = styled('div')(({theme}) => ({
     position: 'relative',
@@ -68,16 +66,9 @@ const Header = () => {
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
     };
-    const handleOpenUserMenu = (event) => {
-        setAnchorElUser(event.currentTarget);
-    };
 
     const handleCloseNavMenu = () => {
         setAnchorElNav(null);
-    };
-
-    const handleCloseUserMenu = () => {
-        setAnchorElUser(null);
     };
 
     return (

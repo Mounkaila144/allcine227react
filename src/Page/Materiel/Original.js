@@ -1,12 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import {Grid, Pagination} from "@mui/material";
-import ProductCard from "../../components/card/ProductCard";
-import Button from "@mui/material/Button";
-import {pink} from "@mui/material/colors";
-import {Link} from "react-router-dom";
 import MaterialCard from "../../components/card/MaterialCard";
 import Search from "../../components/header/Search";
+import ApiLink from "../../components/Api/Api";
 
 const Original = () => {
 
@@ -17,20 +14,19 @@ const Original = () => {
     const [page, setPage] = React.useState(1);
 
 
-    const url=`https://227.allcine227.com/api/articles.json?page=${page}`
+    const url=`https://${ApiLink}/api/articles.json?page=${page}`
     const getData =async () => {
         axios
-            .get(url,{
-                headers:{
-                    "name":"",
-                    "password":""
+            .get(url,{headers:{
+                    "Accept": "application/json",
+                    "Content-Type": "application/json",
                 }
             })
             .then(
                 (res) => {
                     setIsLoaded(true);
                     setProduct(res.data);
-                    setpagecount(50)
+                    setpagecount(51)
 
                 },
                 (error) => {
